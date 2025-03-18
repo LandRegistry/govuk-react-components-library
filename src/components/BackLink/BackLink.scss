@@ -1,0 +1,8 @@
+@import "~govuk-frontend/dist/govuk/base";
+
+.govuk-back-link.back-link-style-override:hover,
+.govuk-back-link.back-link-style-override a:hover {
+  border-color: #0b0c0c;
+  color: #0b0c0c;
+  text-decoration: none;
+}

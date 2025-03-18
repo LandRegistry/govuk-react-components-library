@@ -1,0 +1,17 @@
+$govuk-images-path: "~govuk-frontend/dist/govuk/assets/images/";
+$govuk-fonts-path: "~govuk-frontend/dist/govuk/assets/fonts/";
+$govuk-assets-path: "~govuk-frontend/govuk/assets/";
+
+@import "~govuk-frontend/dist/govuk/base";
+@import "~govuk-frontend/dist/govuk/components/error-summary/error-summary";
+
+.opens-in-new-window {
+  &::after {
+    display: inline-block;
+    width: 16px;
+    height: 11px;
+    margin-left: 4px;
+    background: url("new_window.gif") no-repeat 0 center;
+    content: "";
+  }
+}

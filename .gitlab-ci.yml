@@ -1,0 +1,69 @@
+# The Docker image that will be used to build your app
+image: node:lts
+# Functions that should be executed before the build script is run
+before_script:
+  - node -v
+  - npm -v
+  - npm ci
+  - npm install pdfjs-dist@4.10.38 --save-dev
+
+cache:
+  paths:
+    - node_modules/
+
+stages:
+  - build
+  - test
+  - deploy
+
+build-job:     # This job runs in the build stage, which runs first.
+  stage: build
+  tags: 
+    - React Component Library
+  script:
+    - npm run build
+    - npm run build-storybook -- -o public
+  artifacts:
+    paths:
+      - public
+  only:
+    - main
+
+unit-test-job:   # This job runs in the test stage.
+  stage: test    # It only starts when the job in the build stage completes successfully.
+  tags: 
+    - React Component Library
+  script:
+    - npm run test
+
+lint-test-job:   # This job also runs in the test stage.
+  stage: test    # It can run at the same time as unit-test-job (in parallel).
+  tags: 
+    - React Component Library
+  script:
+    - npm run lint
+
+pages:
+  stage: deploy
+  tags: 
+    - React Component Library
+  script:
+    - npm run build-storybook -- -o public
+  artifacts:
+    paths:
+      # The folder that contains the files to be exposed at the Page URL
+      - public
+  rules:
+    # This ensures that only pushes to the default branch will trigger
+    # a pages deploy
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+
+publish-npm:
+  stage: deploy
+  tags: 
+    - React Component Library For govuk-frontend
+  script:
+    - npm pack
+    - npm publish --access public
+  only:
+    - main

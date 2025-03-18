@@ -1,0 +1,10 @@
+<!-- This is for the govuk-frontend  based on https://storybook.js.org/docs/configure/story-rendering-->
+<script>
+  document.body.classList.add("govuk-template__body");
+  const govukScript = document.createElement("script");
+  const inlineScript = document.createTextNode(
+    "document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');",
+  );
+  govukScript.appendChild(inlineScript);
+  document.body.appendChild(govukScript);
+</script>

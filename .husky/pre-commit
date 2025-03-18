@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Run lint before commit
+npm run lint
+
+# Run format before commit
+npm run format
+
+# generate uml diagram befor commit
+npm run uml
+
+# Run tests before commit
+npm test
+
+# Run build before commit
+npm run build
+
+# Package the library before commit
+npm pack

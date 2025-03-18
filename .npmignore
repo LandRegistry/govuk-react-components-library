@@ -1,0 +1,82 @@
+# Exclude source files
+/src
+/public
+/storybook-static
+/.husky
+/.storybook
+
+# Exclude local configuration
+/.babelrc
+/webpack.config.js
+
+# Exclude node_modules
+/node_modules
+
+# Exclude test files and directories
+/tests
+/__tests__
+/test
+/spec
+/*.test.js
+/*.spec.js
+/coverage
+/fragments
+
+# Exclude miscellaneous files
+/.DS_Store
+/npm-debug.log*
+/yarn-debug.log*
+/yarn-error.log*
+/copy_assets.sh
+/Dockerfile
+/.dockerignore
+/Jenkinsfile
+/sonar-project.properties
+/initial_creations.sh
+/*.md
+/*config.*
+/*.y*ml
+/*.*js
+/src/JestSetup.ts
+/*.log
+/*.tgz
+/README.Docker.md
+
+# Development files
+.github/
+.storybook/
+src/
+tests/
+storybook-static/
+.eslintrc
+.prettierrc
+rollup.config.mjs
+tsconfig.json
+jest.config.js
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependencies
+node_modules/
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# Misc
+.DS_Store
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Editor directories and files
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
