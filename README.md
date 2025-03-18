@@ -492,7 +492,7 @@ npm install pdfjs-dist
 2. Import the PDFViewerCanvas component from the separate entry point:
 
 ```jsx
-import { PDFViewerCanvas } from "govuk-react-components-library/pdfViewer";
+import { PDFViewerCanvas } from "@hmlr/govuk-react-components-library/pdfViewer";
 ```
 
 3. Use the component in your React application:
