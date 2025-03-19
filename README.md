@@ -22,25 +22,25 @@ npm install @hmlr/govuk-react-components-library
 
 ## Components
 
-Note that any component with a `- ***` below means that - This component may javascript to be enabled because of the transitions present in the components using `createAll` or `initAll` recommended by [`govuk-frontend` documentation](https://frontend.design-system.service.gov.uk/configure-components/)
+Note that any component with a `👈🏽` below means that - This component will need javascript to be enabled because of the transitions present in the components using `createAll` or `initAll` recommended by [`govuk-frontend` documentation](https://frontend.design-system.service.gov.uk/configure-components/)
 
 The Components includes:
 
-- [Accordion](./src/components/Accordion/Accordion.tsx) `- ***`
+- [Accordion](./src/components/Accordion/Accordion.tsx) `👈🏽`
 - [Boolean](./src/components/Boolean/Boolean.tsx)
 - [Breadcrumbs](./src/components/Breadcrumbs/Breadcrumbs.tsx)
-- [Button](./src/components/Button/Button.tsx) `- ***`
+- [Button](./src/components/Button/Button.tsx) `👈🏽`
 - [CharacterCount](./src/components/CharacterCount/CharacterCount.tsx)
-- [CheckBoxes](./src/components/Checkboxes/Checkboxes.tsx) `- ***`
+- [CheckBoxes](./src/components/Checkboxes/Checkboxes.tsx) `👈🏽`
 - [CookieBanner](./src/components/CookieBanner/CookieBanner.tsx)
 - [DateInput](./src/components/DateInput/DateInput.tsx)
 - [Details](./src/components/Details/Details.tsx)
 - [ErrorMessage](./src/components/ErrorMessage/ErrorMessage.tsx)
-- [ErrorSummary](./src/components/ErrorSummary/ErrorSummary.tsx) `- ***`
+- [ErrorSummary](./src/components/ErrorSummary/ErrorSummary.tsx) `👈🏽`
 - [Fieldset](./src/components/Fieldset/Fieldset.tsx)
 - [FileUpload](./src/components/FileUpload/FileUpload.tsx)
 - [Footer](./src/components/Footer/Footer.tsx)
-- [Header](./src/components/Header/Header.tsx) `- ***`
+- [Header](./src/components/Header/Header.tsx) `👈🏽`
 - [Hint](./src/components/Hint/Hint.tsx)
 - [Input](./src/components/Input/Input.tsx)
 - [InsetText](./src/components/InsetText/InsetText.tsx)
@@ -49,20 +49,20 @@ The Components includes:
 - [Pagination](./src/components/Pagination/Pagination.tsx)
 - [Panel](./src/components/Panel/Panel.tsx)
 - [PhaseBanner](./src/components/PhaseBanner/PhaseBanner.tsx)
-- [Radios](./src/components/Radios/Radios.tsx) `- ***`
+- [Radios](./src/components/Radios/Radios.tsx) `👈🏽`
 - [Select](./src/components/Select/Select.tsx)
 - [ServiceNavigation](./src/components/ServiceNavigation/ServiceNavigation.tsx)
-- [SkipLink](./src/components/SkipLink/SkipLink.tsx) `- ***`
+- [SkipLink](./src/components/SkipLink/SkipLink.tsx) `👈🏽`
 - [SummaryList](./src/components/SummaryList/SummaryList.tsx)
 - [Table](./src/components/Table/Table.tsx)
-- [Tabs](./src/components/Tabs/Tabs.tsx) `- ***`
+- [Tabs](./src/components/Tabs/Tabs.tsx) `👈🏽`
 - [Tag](./src/components/Tag/Tag.tsx)
 - [TaskList](./src/components/TaskList/TaskList.tsx)
 - [Textarea](./src/components/Textarea/Textarea.tsx)
 - [WarningText](./src/components/WarningText/WarningText.tsx)
 
 There are Also Several components that can be used for error processing and other functionality like dashboard display:
-Note that some of the components below with `- ***` - Means like the above components, javascript needs to be enabled.
+Note that some of the components below with `👈🏽` - Means like the above components, javascript needs to be enabled.
 
 - [CardColumn](./src/components/CardColumn/CardColumn.tsx)
 - [CardLayout](./src/components/CardLayout/CardLayout.tsx)
@@ -75,7 +75,7 @@ Note that some of the components below with `- ***` - Means like the above compo
 - [NotFoundPage](./src/components/NotFoundPage/NotFoundPage.tsx)
 - [PDFViewer](./src/components/PDFViewer/PDFViewer.tsx)
 - [PDFViewerCanvas](./src/components/PDFViewerCanvas/PDFViewerCanvas.tsx) - Read [Documentation](./src/components/PDFViewerCanvas/README.md) to see usage
-- [ProblemWithService](./src/components/ProblemWithService/ProblemWithService.tsx) `- ***` - `createAll(ErrorSummary..)` or `ConfigureOverallErrorSummary()`
+- [ProblemWithService](./src/components/ProblemWithService/ProblemWithService.tsx) `👈🏽` - `createAll(ErrorSummary..)` or `ConfigureOverallErrorSummary()`
 - [WarningInfo](./src/components/WarningInfo//WarningInfo.tsx)
 
 There are also some useful components :
@@ -86,7 +86,7 @@ There are also some useful components :
 - [Loading](./src/components/Loading/Loading.tsx)
 - [Main](./src/components/Main/Main.tsx)
 
-There are some convenience functions that can be used to configure components with `- ***` mentioned above.
+There are some convenience functions that can be used to configure components with `👈🏽` mentioned above.
 
 - [ExtractAccordionConfigFromAttributes](./src/components/Accordion/Accordion.config.tsx) - Extracts Accordion configurations from fixtures attributes e.g. `showAllSectionsText` translates to `showAllSections` in `AccordionConfig`.
 - [ConfigureOverallAccordion](./src/components/Accordion/Accordion.config.tsx) - Sets overall behavior and configurations for all accordions or in a scope (document or specified element) as per [govuk-frontend accordion api reference](https://frontend.design-system.service.gov.uk/javascript-api-reference/#accordion).
@@ -407,6 +407,22 @@ export default function SuccessPanel() {
     <Panel titleChildren="Application complete">
       Your reference number: HDJ2123F
     </Panel>
+  );
+}
+```
+
+**Customizing components**
+
+You can customize the appearance and behavior of components by passing props:
+
+```jsx
+import { Button } from "@hmlr/govuk-react-component-library";
+
+export default function CustomButton() {
+  return (
+    <Button variant="warning" onClick={() => alert("Button clicked!")}>
+      Custom Button
+    </Button>
   );
 }
 ```
