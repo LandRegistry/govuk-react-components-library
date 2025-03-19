@@ -1,2 +1,5 @@
 /.storybook/public/pdfjs-4.4.168-dist/** linguist-vendored
 .storybook/public/pdfjs-4.4.168-dist/** linguist-vendored
+bundle-analysis-main.html linguist-generated
+bundle-analysis-pdfvc.html linguist-generated
+.storybook/public/pdfjs-4.4.168-dist/web/** linguist-vendored
