@@ -1,1 +1,2 @@
-.storybook/public/pdfjs-4.4.168-dist/* linguist-vendored
+/.storybook/public/pdfjs-4.4.168-dist/** linguist-vendored
+.storybook/public/pdfjs-4.4.168-dist/** linguist-vendored
