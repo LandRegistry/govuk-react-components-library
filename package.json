@@ -29,7 +29,8 @@
     "format": "prettier --ignore-path .gitignore --write '**/*.+(js|mjs|ts|tsx|json|css|scss|html|md)'",
     "prepare": "husky",
     "release": "standard-version",
-    "uml": "tsuml2 --glob './src/**/\\!(*.spec|*.test|TestUtilities|JestSetup).[t]s?(x)' -o './assets/uml-diagram.svg'"
+    "uml": "tsuml2 --glob './src/**/\\!(*.spec|*.test|TestUtilities|JestSetup).[t]s?(x)' -o './assets/uml-diagram.svg'",
+    "chromatic": "npx chromatic --exit-zero-on-changes"
   },
   "repository": {
     "type": "git",
@@ -93,6 +94,7 @@
     "autoprefixer": "^10.4.21",
     "babel-jest": "^29.7.0",
     "bootstrap": "^5.3.3",
+    "chromatic": "^11.27.0",
     "css-loader": "^7.1.2",
     "deep-iterator": "^1.1.0",
     "eslint": "^9.22.0",
