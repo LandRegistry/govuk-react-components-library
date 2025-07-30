@@ -1,6 +1,6 @@
 {
   "name": "@hmlr/govuk-react-components-library",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "These are common component use for React applications based on GDS and govuk-frontend",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
