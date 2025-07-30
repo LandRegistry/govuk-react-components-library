@@ -1,41 +1,39 @@
 import React, { useEffect } from "react";
 import "./Radios.scss";
 import Radios from "./Radios";
-import { Meta, StoryFn, StoryObj } from "@storybook/react";
+import { Meta, StoryFn, StoryObj } from "@storybook/react-vite";
 import fixtures from "govuk-frontend/dist/govuk/components/radios/fixtures.json";
 import { extractShownFixtures } from "../../utils/ProcessExampleData";
 import { ComponentFixture } from "../../dynamics";
 import { WithItemRefs } from "../../utils/WithReference";
 import { ConfigureOverallRadios } from "./Radios.config";
-import { action } from "@storybook/addon-actions";
+import { action } from "storybook/actions";
 
-let configured = false;
 const meta: Meta<typeof Radios> = {
   title: "GOVUK Design System/Radios",
   component: Radios,
   decorators: [
-    (Story, { parameters }) => {
+    (Story) => {
       useEffect(() => {
-        const configureRadios = () => {
-          const isDocsMode = window.location.search.includes("viewMode=docs");
-          if (
-            isDocsMode &&
-            !configured &&
-            parameters.initializeConfigurations
-          ) {
-            ConfigureOverallRadios();
-            configured = true;
-          } else if (!isDocsMode) {
-            ConfigureOverallRadios();
-          }
-        };
-        configureRadios();
+        // Remove any existing initialization before configuring
+        const radios = document.querySelectorAll(".govuk-radios");
+        radios.forEach((radio) => {
+          radio.removeAttribute("data-module");
+        });
+
+        // Initialize once
+        ConfigureOverallRadios();
       }, []);
       return <Story />;
     },
   ],
-  tags: ["autodocs"],
-  args: { onChange: action("on-change"), onBlur: action("on-blur") },
+  parameters: {
+    initializeConfigurations: true,
+  },
+  args: {
+    onChange: action("on-change"),
+    onBlur: action("on-blur"),
+  },
 };
 
 export default meta;
