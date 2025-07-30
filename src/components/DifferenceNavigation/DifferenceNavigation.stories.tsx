@@ -1,9 +1,9 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React from "react";
 import "./DifferenceNavigation.scss";
-import { Meta } from "@storybook/react";
+import { Meta } from "@storybook/react-vite";
 import DifferenceNavigation from "./DifferenceNavigation";
-import { action } from "@storybook/addon-actions";
+import { action } from "storybook/actions";
 
 export default {
   title: "ReactComponentLibrary/Difference navigation",

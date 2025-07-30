@@ -1,6 +1,6 @@
 import React from "react";
 import "./WarningInfo.scss";
-import { StoryFn, Meta } from "@storybook/react";
+import { StoryFn, Meta } from "@storybook/react-vite";
 import WarningInfo from "./WarningInfo";
 import { MemoryRouter, Routes } from "react-router";
 import { Route } from "react-router-dom";

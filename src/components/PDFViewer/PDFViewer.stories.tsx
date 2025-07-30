@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React from "react";
 import PDFViewer from "./PDFViewer";
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-vite";
 import {
   document as Base64Document,
   sampleOfficialNumber,

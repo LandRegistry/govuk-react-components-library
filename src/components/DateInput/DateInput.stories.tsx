@@ -1,7 +1,7 @@
 import React from "react";
 import "./DateInput.scss";
 import DateInput from "./DateInput";
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-vite";
 import fixtures from "govuk-frontend/dist/govuk/components/date-input/fixtures.json";
 import { extractShownFixtures } from "../../utils/ProcessExampleData";
 import { ComponentFixture } from "../../dynamics";

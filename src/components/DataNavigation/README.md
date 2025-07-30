@@ -5,16 +5,13 @@ The `DataNavigation` component provides a simple interface for navigating throug
 ### Key Features:
 
 1. **Previous/Next Navigation**:
-
    - The component allows users to navigate back and forth between data items using two buttons.
    - The `previousCondition` and `nextCondition` props control whether the buttons are enabled or disabled, preventing invalid navigation (e.g., when on the first or last item).
 
 2. **Data Context Display**:
-
    - A label in the center provides a description of the current data item being viewed, keeping users informed of what they are looking at.
 
 3. **Customizable Text**:
-
    - You can easily customize the labels of the previous and next buttons using `previousText` and `nextText`.
 
 4. **Accessibility**:

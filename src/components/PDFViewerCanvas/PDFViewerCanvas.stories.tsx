@@ -2,7 +2,7 @@
 import React from "react";
 import "./PDFViewerCanvas.scss";
 import PDFViewerCanvas from "./PDFViewerCanvas";
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-vite";
 import {
   document as Base64Document,
   sampleOfficialNumber,

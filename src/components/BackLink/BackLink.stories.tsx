@@ -2,7 +2,7 @@
 import React from "react";
 import "./BackLink.scss";
 import BackLink from "./BackLink";
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-vite";
 import fixtures from "govuk-frontend/dist/govuk/components/back-link/fixtures.json";
 import { extractShownFixtures } from "../../utils/ProcessExampleData";
 import { ComponentFixture } from "../../dynamics";

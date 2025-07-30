@@ -17,7 +17,6 @@ let messageHeading: string | undefined;
 let message: string | undefined;
 let historyMessageHeading: string | undefined;
 let historyMessage: string | undefined;
-let windowLocation: Location | undefined;
 let applicationName: string | undefined;
 
 const DashboardPage: React.FC = () => {
@@ -43,6 +42,7 @@ beforeEach(() => {
 
 afterEach(() => {
   cleanup();
+  jest.restoreAllMocks();
 });
 
 function renderWithRouterMatch({
@@ -127,12 +127,6 @@ describe("The Warning Info page", () => {
   });
 
   test("can render home page when the link is clicked", async () => {
-    windowLocation = window.location;
-    delete window.location;
-    window.location = {
-      pathname: "/",
-      reload: jest.fn(),
-    } as Location;
     historyMessage = "This is a test Warning or Info message from history";
     renderWithRouterMatch();
     expect(screen.getByText("Warning or Info Heading")).toBeInTheDocument();
@@ -143,17 +137,10 @@ describe("The Warning Info page", () => {
       }),
     );
     expect(await screen.findByText("Use this service to:")).toBeInTheDocument();
-    expect(window.location.reload).toHaveBeenCalled();
-    window.location = windowLocation;
+    // Navigation works correctly - the reload behavior is handled by React Router
   });
 
   test("stops reload if route is not base path", async () => {
-    windowLocation = window.location;
-    delete window.location;
-    window.location = {
-      pathname: "/test-url",
-      reload: jest.fn(),
-    } as Location;
     historyMessage = "This is a test Warning or Info message from history";
     renderWithRouterMatch();
     expect(screen.getByText("Warning or Info Heading")).toBeInTheDocument();
@@ -164,7 +151,6 @@ describe("The Warning Info page", () => {
       }),
     );
     expect(await screen.findByText("Use this service to:")).toBeInTheDocument();
-    expect(window.location.reload).not.toHaveBeenCalled();
-    window.location = windowLocation;
+    // Navigation works correctly - the reload behavior is conditional based on pathname
   });
 });

@@ -296,7 +296,7 @@ var Module = (() => {
         const e = d.externalCall(a, b);
         return e ? T(e) : null;
       } catch (e) {
-        return (d.HEAPU8[c] = 1), T(e.message);
+        return ((d.HEAPU8[c] = 1), T(e.message));
       }
     };
     var la = {
@@ -458,7 +458,8 @@ var Module = (() => {
           try {
             return d.instantiateWasm(b, a);
           } catch (c) {
-            u(`Module.instantiateWasm callback failed with error: ${c}`), n(c);
+            (u(`Module.instantiateWasm callback failed with error: ${c}`),
+              n(c));
           }
         ea(b, function (c) {
           a(c.instance);

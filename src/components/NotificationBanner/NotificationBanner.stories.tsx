@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./NotificationBanner.scss";
 import NotificationBanner from "./NotificationBanner";
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-vite";
 import fixtures from "govuk-frontend/dist/govuk/components/notification-banner/fixtures.json";
 import { extractShownFixtures } from "../../utils/ProcessExampleData";
 import { ComponentFixture } from "../../dynamics";

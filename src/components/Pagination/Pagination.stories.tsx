@@ -1,8 +1,8 @@
 import React from "react";
 import "./Pagination.scss";
-import { Meta } from "@storybook/react";
+import { Meta } from "@storybook/react-vite";
 import Pagination from "./Pagination";
-import { action } from "@storybook/addon-actions";
+import { action } from "storybook/actions";
 // import fixtures from "govuk-frontend/dist/govuk/components/pagination/fixtures.json";
 
 export default {

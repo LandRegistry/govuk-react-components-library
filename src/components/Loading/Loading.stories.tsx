@@ -1,5 +1,5 @@
 import React from "react";
-import { Meta, StoryFn } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react-vite";
 import Loading from "./Loading";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 

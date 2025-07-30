@@ -6,11 +6,11 @@ npm run lint
 # Run format before commit
 npm run format
 
-# generate uml diagram befor commit
+# generate uml diagram before commit
 npm run uml
 
 # Run tests before commit
-npm test
+npm run test
 
 # Run build before commit
 npm run build

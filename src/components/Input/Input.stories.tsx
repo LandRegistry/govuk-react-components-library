@@ -1,7 +1,7 @@
 import React from "react";
 import "./Input.scss";
 import Input from "./Input";
-import { Meta, StoryFn, StoryObj } from "@storybook/react";
+import { Meta, StoryFn, StoryObj } from "@storybook/react-vite";
 import fixtures from "govuk-frontend/dist/govuk/components/input/fixtures.json";
 import { extractShownFixtures } from "../../utils/ProcessExampleData";
 import { ComponentFixture } from "../../dynamics";

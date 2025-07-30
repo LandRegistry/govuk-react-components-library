@@ -113,10 +113,11 @@ describe("The Problem with service page", () => {
 
   test("can render home page when the link is clicked", async () => {
     windowLocation = window.location;
+    const mockReload = jest.fn();
     delete window.location;
     window.location = {
       pathname: "/",
-      reload: jest.fn(),
+      reload: mockReload,
     } as Location;
     message = "This is a test Problem with service message the second";
     renderWithRouterMatch();
@@ -139,10 +140,11 @@ describe("The Problem with service page", () => {
 
   test("stops reload if route is not base path", async () => {
     windowLocation = window.location;
+    const mockReload = jest.fn();
     delete window.location;
     window.location = {
       pathname: "/test-url",
-      reload: jest.fn(),
+      reload: mockReload,
     } as Location;
     message = "This is a test Problem with service message the second";
     renderWithRouterMatch();
@@ -160,7 +162,7 @@ describe("The Problem with service page", () => {
       }),
     );
     expect(await screen.findByText("Use this service to:")).toBeInTheDocument();
-    expect(window.location.reload).not.toHaveBeenCalled();
+    expect(mockReload).not.toHaveBeenCalled();
     window.location = windowLocation;
   });
 });

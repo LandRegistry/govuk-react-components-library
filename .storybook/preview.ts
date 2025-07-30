@@ -1,4 +1,4 @@
-import type { Preview } from "@storybook/react";
+import type { Preview } from "@storybook/react-vite";
 import "../src/index.scss";
 
 const preview: Preview = {
@@ -11,7 +11,7 @@ const preview: Preview = {
     },
     a11y: {
       // Optional selector to inspect
-      element: "#storybook-root",
+      context: "#storybook-root",
       config: {
         rules: [
           {

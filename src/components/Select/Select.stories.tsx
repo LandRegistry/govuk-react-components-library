@@ -2,11 +2,11 @@
 import React from "react";
 import "./Select.scss";
 import Select from "./Select";
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-vite";
 import fixtures from "govuk-frontend/dist/govuk/components/select/fixtures.json";
 import { extractShownFixtures } from "../../utils/ProcessExampleData";
 import { ComponentFixture } from "../../dynamics";
-import { action } from "@storybook/addon-actions";
+import { action } from "storybook/actions";
 
 const meta: Meta<typeof Select> = {
   title: "GOVUK Design System/Select",

@@ -2,7 +2,7 @@
 import React from "react";
 import "./Panel.scss";
 import Panel from "./Panel";
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-vite";
 import fixtures from "govuk-frontend/dist/govuk/components/panel/fixtures.json";
 import { extractShownFixtures } from "../../utils/ProcessExampleData";
 import { ComponentFixture } from "../../dynamics";
@@ -22,6 +22,11 @@ const examplesFromFixtures: Array<ComponentFixture> =
 // Utility function to create stories from fixtures
 const createStory = (index: number): Story => {
   const example = examplesFromFixtures[index];
+  if (!example) {
+    throw new Error(
+      `No fixture found at index ${index}. Available fixtures: ${examplesFromFixtures.length}`,
+    );
+  }
   return {
     name: example.name,
     args: { ...example.options },
@@ -30,11 +35,13 @@ const createStory = (index: number): Story => {
 
 // Stories generated from fixtures
 export const DefaultExample = createStory(0);
-const example = examplesFromFixtures[1];
+
+// Create a custom story for heading level since it's not in the visible fixtures
 export const CustomHeadingLevel: Story = {
-  name: example.name,
+  name: "Custom Heading Level",
   args: {
-    ...example.options,
+    titleChildren: "Application complete",
+    children: "Your reference number: HDJ2123F",
     headingLevel: "h2",
   },
 };

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./CharacterCount.scss";
 import CharacterCount from "./CharacterCount";
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-vite";
 import fixtures from "govuk-frontend/dist/govuk/components/character-count/fixtures.json";
 import { extractShownFixtures } from "../../utils/ProcessExampleData";
 import { ComponentFixture } from "../../dynamics";

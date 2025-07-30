@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React from "react";
 import "./NotFoundPage.scss";
-import { Meta } from "@storybook/react";
+import { Meta } from "@storybook/react-vite";
 import NotFoundPage from "./NotFoundPage";
 
 export default {

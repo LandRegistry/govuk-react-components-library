@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "./ProblemWithService.scss";
-import { StoryFn, Meta } from "@storybook/react";
+import { StoryFn, Meta } from "@storybook/react-vite";
 import ProblemWithService from "./ProblemWithService";
 import { MemoryRouter, Routes } from "react-router";
 import { Route } from "react-router-dom";

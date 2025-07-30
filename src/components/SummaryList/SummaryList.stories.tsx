@@ -2,7 +2,7 @@
 import React from "react";
 import "./SummaryList.scss";
 import SummaryList from "./SummaryList";
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-vite";
 import fixtures from "govuk-frontend/dist/govuk/components/summary-list/fixtures.json";
 import { extractShownFixtures } from "../../utils/ProcessExampleData";
 import { ComponentFixture } from "../../dynamics";

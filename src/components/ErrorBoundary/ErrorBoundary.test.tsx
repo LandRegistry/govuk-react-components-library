@@ -36,7 +36,7 @@ describe("The Error Boundary component", () => {
     expect(
       screen.getByText("Sorry, there is a problem with the service"),
     ).toBeTruthy();
-    expect(console.error).toBeCalled();
+    expect(console.error).toHaveBeenCalled();
   });
 
   test("renders error message from caught error", () => {

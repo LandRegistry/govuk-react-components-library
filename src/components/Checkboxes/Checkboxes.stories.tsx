@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import "./Checkboxes.scss";
 import Checkboxes from "./Checkboxes";
-import { Meta, StoryFn, StoryObj } from "@storybook/react";
+import { Meta, StoryFn, StoryObj } from "@storybook/react-vite";
 import fixtures from "govuk-frontend/dist/govuk/components/checkboxes/fixtures.json";
 import { extractShownFixtures } from "../../utils/ProcessExampleData";
 import { ComponentFixture } from "../../dynamics";
 import { WithItemRefs } from "../../utils/WithReference";
 import { ConfigureOverallCheckboxes } from "./Checkboxes.config";
-import { action } from "@storybook/addon-actions";
+import { action } from "storybook/actions";
 
 let configured = false;
 const meta: Meta<typeof Checkboxes> = {

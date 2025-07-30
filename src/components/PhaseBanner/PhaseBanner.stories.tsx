@@ -2,7 +2,7 @@
 import React from "react";
 import "./PhaseBanner.scss";
 import PhaseBanner from "./PhaseBanner";
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-vite";
 import fixtures from "govuk-frontend/dist/govuk/components/phase-banner/fixtures.json";
 import { extractShownFixtures } from "../../utils/ProcessExampleData";
 import { ComponentFixture } from "../../dynamics";

@@ -1,5 +1,5 @@
 import React from "react";
-import { StoryFn, Meta } from "@storybook/react";
+import { StoryFn, Meta } from "@storybook/react-vite";
 import { MemoryRouter, Routes } from "react-router";
 import { Route } from "react-router-dom";
 import Landing from "./Landing";

@@ -1,5 +1,5 @@
 import React from "react";
-import { Meta, StoryFn } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react-vite";
 import { BrowserRouter } from "react-router-dom";
 import CardLayout from "./CardLayout";
 import { CardLayoutProps } from "./CardLayout.types";

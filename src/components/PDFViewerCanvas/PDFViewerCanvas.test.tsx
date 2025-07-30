@@ -116,12 +116,16 @@ describe("PDFViewerCanvas", () => {
 
     const mockNavigation = screen.getByTestId("difference-navigation");
     expect(mockNavigation).toBeInTheDocument();
-    expect(DifferenceNavigation).toHaveBeenCalledWith(
-      expect.objectContaining({
-        setDifferenceFocus: expect.any(Function),
-      }),
-      undefined,
-    );
+
+    // Check that DifferenceNavigation was called with the correct props
+    expect(DifferenceNavigation).toHaveBeenCalled();
+    const callArgs = (DifferenceNavigation as jest.Mock).mock.calls[0][0];
+    expect(callArgs).toHaveProperty("differenceId");
+    expect(callArgs).toHaveProperty("setDifferenceFocus");
+    expect(callArgs).toHaveProperty("totalDifferences");
+    expect(callArgs).toHaveProperty("keyword", "page");
+    expect(callArgs).toHaveProperty("plural", "Pages");
+    expect(typeof callArgs.setDifferenceFocus).toBe("function");
   });
 
   test("handles errors during PDF loading", async () => {
@@ -142,7 +146,7 @@ describe("PDFViewerCanvas", () => {
     ).toBeInTheDocument();
   });
 
-  test("handles errors during PDF loading", async () => {
+  test("handles errors during PDF loading without document name", async () => {
     (pdfjsLib.getDocument as jest.Mock).mockReturnValueOnce({
       promise: Promise.reject(new Error("Error loading PDF")),
     });
