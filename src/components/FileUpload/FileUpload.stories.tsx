@@ -79,6 +79,15 @@ export const EnhancedMultipleFiles: Story = {
   },
 };
 
+export const EnhancedCustomWrapperClassesAndAttributes: Story = {
+  name: "enhanced, custom wrapper classes and attributes",
+  args: {
+    ...examplesFromFixtures.find(
+      (f) => f.name === "enhanced, custom wrapper classes and attributes",
+    )?.options,
+  },
+};
+
 export const Translated: Story = {
   name: "translated",
   args: {

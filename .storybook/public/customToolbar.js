@@ -15,6 +15,10 @@ function editToolBar() {
   const file = urlSearchParams.get("file");
   // console.log(file);
 
+  // Disable file opening - PDFViewer is for viewing only
+  removeElement("openFile");
+  removeElement("secondaryOpenFile");
+
   if (toolbar.startsWith("minimal")) {
     // Adding elements to right part of toolbar
     addElemFromSecondaryToPrimary("pageRotateCw", "toolbarViewerRight"); // Move Rotate Clockwise to main toolbar
@@ -25,8 +29,6 @@ function editToolBar() {
     removeHorizontalToolbarSeparator(1);
 
     // Removing unnecessary buttons
-    removeElement("openFile");
-    removeElement("secondaryOpenFile");
     removeElement("editorModeButtons");
     removeElement("editorModeSeparator");
     removeElement("download");
