@@ -10,6 +10,13 @@ on:
 jobs:
   chromatic-deployment:
     runs-on: ubuntu-latest
+    # Needed by the "Commit updated README" step below, which pushes straight
+    # to main when the published Storybook link has changed - the default
+    # GITHUB_TOKEN is read-only otherwise. If this repo's branch protection
+    # requires PRs into main, this push will be rejected; open a PR instead
+    # in that case rather than relaxing protection for this one write.
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v7
         with:
@@ -25,9 +32,40 @@ jobs:
         run: npm ci
 
       - name: Publish to Chromatic
+        id: chromatic
         uses: chromaui/action@v1
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ secrets.GITHUB_TOKEN }}
           autoAcceptChanges: 'main'
           exitZeroOnChanges: true
+
+      # storybookUrl is the stable branch-alias link (main--<app-id>.chromatic.com)
+      # that Chromatic keeps pointed at the latest published build - not a
+      # per-build snapshot URL - so this only produces a real diff once (the
+      # first time this runs); every build after that is a no-op. Runs only
+      # on pushes to main, never on PR builds, since a PR's storybookUrl
+      # points at that PR's own preview, not the one README should link to.
+      - name: Update README with the latest Chromatic Storybook link
+        if: github.event_name == 'push'
+        env:
+          STORYBOOK_URL: ${{ steps.chromatic.outputs.storybookUrl }}
+        run: |
+          if [ -z "$STORYBOOK_URL" ]; then
+            echo "::warning::chromatic action returned no storybookUrl - leaving README untouched"
+            exit 0
+          fi
+          sed -i -E "s#\[components in chromatic\]\([^)]*\)#[components in chromatic](${STORYBOOK_URL})#" README.md
+
+      - name: Commit updated README
+        if: github.event_name == 'push'
+        run: |
+          if git diff --quiet README.md; then
+            echo "README Chromatic link already up to date - nothing to commit"
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add README.md
+            git commit -m "docs: update Chromatic Storybook link [skip ci]"
+            git push
+          fi
