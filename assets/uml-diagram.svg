@@ -28,7 +28,7 @@
 [&lt;interface&gt;ButtonProps|+element?: string;+href?: string;+to?: To;+isStartButton?: boolean;+disabled?: boolean;+className?: string;+preventDoubleClick?: boolean;+name?: string;+type?: string;+children?: ReactNode|]
 [&lt;interface&gt;CardColumnProps|+link: string;+header: string;+body: string;+textColor?: string;+hoverColor?: string|]
 [&lt;interface&gt;CardLayoutProps|+cardColumns: CardColumnProps\[\];+numberOfGridColumns?: number|]
-[&lt;interface&gt;CharacterCountProps|+id: string;+className?: string;+maxlength?: number;+threshold?: number;+maxwords?: number;+errorMessage?: ErrorMessageProps;+countMessage?: { className?: string; }|]
+[&lt;interface&gt;CharacterCountProps|+id?: string;+className?: string;+maxlength?: number;+threshold?: number;+maxwords?: number;+errorMessage?: ErrorMessageProps;+countMessage?: { className?: string; }|]
 [&lt;interface&gt;CheckboxesProps||]
 [&lt;interface&gt;CookieBannerMessageAction|+className?: string;+href?: string;+to?: string;+children?: React.ReactNode;+type?: &quot;button&quot; \| &quot;submit&quot; \| &quot;reset&quot;|]
 [&lt;interface&gt;CookieBannerMessageItem|+headingChildren?: React.ReactNode;+children?: React.ReactNode;+aria-label?: string;+actions?: CookieBannerMessageAction\[\];+className?: string|]
@@ -90,7 +90,7 @@
 [&lt;interface&gt;ProblemWithServiceProps|+message?: string;+applicationName?: string;+applicationRoute?: string;+reportingLink?: string;+basePageName?: string|]
 [&lt;interface&gt;RadiosProps|+value?: string;+defaultValue?: string;+items?: BooleanItem\[\]|]
 [&lt;interface&gt;Option|+reactListKey?: string \| number;+children: ReactNode|]
-[&lt;interface&gt;SelectProps|+className?: string;+aria-describedby?: string;+errorMessage?: ErrorMessageProps;+formGroup?: { \[key: string\]: unknown; className?: string; };+hint?: HintProps;+id: string;+items?: Option\[\];+label: LabelProps|]
+[&lt;interface&gt;SelectProps|+className?: string;+aria-describedby?: string;+errorMessage?: ErrorMessageProps;+formGroup?: { \[key: string\]: unknown; className?: string; };+hint?: HintProps;+id?: string;+items?: Option\[\];+label: LabelProps|]
 [&lt;interface&gt;NavigationItem|+active?: boolean;+className?: string;+children?: ReactNode;+href?: string;+to?: To;+reactListKey?: string \| number|]
 [&lt;interface&gt;ServiceNavigationProps|+className?: string;+containerClassName?: string;+menuButtonLabel?: string;+navigation?: NavigationItem\[\];+navigationClassName?: string;+navigationLabel?: string;+serviceName?: string;+serviceUrlHref?: string;+serviceUrlTo?: To|]
 [&lt;interface&gt;SkipLinkProps|+href: string;+className: string;+children?: ReactNode|]
@@ -790,7 +790,7 @@
 </g>
 <g transform="translate(6614, 137)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="CharacterCountProps" data-compartment="1">
 <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="CharacterCountProps" data-compartment="1">
-<text x="0.0" y="14.1" stroke="none" data-name="CharacterCountProps" data-compartment="1">+id: string</text>
+<text x="0.0" y="14.1" stroke="none" data-name="CharacterCountProps" data-compartment="1">+id?: string</text>
 <text x="0.0" y="30.3" stroke="none" data-name="CharacterCountProps" data-compartment="1">+className?: string</text>
 <text x="0.0" y="46.5" stroke="none" data-name="CharacterCountProps" data-compartment="1">+maxlength?: number</text>
 <text x="0.0" y="62.7" stroke="none" data-name="CharacterCountProps" data-compartment="1">+threshold?: number</text>
@@ -2294,7 +2294,7 @@
 <text x="0.0" y="78.9" stroke="none" data-name="SelectProps" data-compartment="1">className?: string</text>
 <text x="0.0" y="95.1" stroke="none" data-name="SelectProps" data-compartment="1">}</text>
 <text x="0.0" y="111.3" stroke="none" data-name="SelectProps" data-compartment="1">+hint?: HintProps</text>
-<text x="0.0" y="127.5" stroke="none" data-name="SelectProps" data-compartment="1">+id: string</text>
+<text x="0.0" y="127.5" stroke="none" data-name="SelectProps" data-compartment="1">+id?: string</text>
 <text x="0.0" y="143.7" stroke="none" data-name="SelectProps" data-compartment="1">+items?: Option[]</text>
 <text x="0.0" y="159.9" stroke="none" data-name="SelectProps" data-compartment="1">+label: LabelProps</text>
 

@@ -46,13 +46,21 @@ describe("Panel component", () => {
         example.options.headingLevel = `h${example.options.headingLevel}`;
       }
 
-      render(<Panel {...example.options} />);
+      const { container } = render(<Panel {...example.options} />);
       expect(
         screen.getByRole("heading", {
           level: level || 1,
         }),
       ).toBeInTheDocument();
-      expect(screen.getByText(example.options.children)).toBeInTheDocument();
+      // example.options.children may be a plain string (fixtures using `text`)
+      // or a parsed React node tree (fixtures using `html`, via
+      // ProcessExampleData's html-react-parser step), so it can't reliably be
+      // passed to getByText - assert the body renders with content instead.
+      if (example.options.children) {
+        const body = container.querySelector(".govuk-panel__body");
+        expect(body).toBeInTheDocument();
+        expect(body?.textContent?.trim()).not.toBe("");
+      }
     });
   });
 });

@@ -32,7 +32,7 @@ const ServiceNavigation: React.FC<
               <LinkWithRef
                 href={serviceUrlHref}
                 to={serviceUrlTo}
-                className="govuk-header__link govuk-header__link--service-name"
+                className="govuk-service-navigation__link"
               >
                 {serviceName}
               </LinkWithRef>
