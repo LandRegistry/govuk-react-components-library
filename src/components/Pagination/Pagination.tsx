@@ -33,7 +33,7 @@ const Pagination: React.FC<PaginationProps> = ({
             item.ellipsis ? (
               <li
                 key={index}
-                className="govuk-pagination__item govuk-pagination__item--ellipses"
+                className="govuk-pagination__item govuk-pagination__item--ellipsis"
               >
                 {DOTS}
               </li>

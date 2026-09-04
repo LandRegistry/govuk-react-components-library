@@ -28,6 +28,7 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import * as prettier from "prettier";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
@@ -369,7 +370,24 @@ for (const componentName of srcComponentNames) {
     `${componentName}.stories.tsx`,
   );
 
-  fs.writeFileSync(outputPath, generateFile(componentName, fixtures), "utf8");
+  // Formatted here (rather than left for a separate `npm run format` pass)
+  // so the output always matches what `npm run lint` expects - this script
+  // runs on every `npm run storybook` via the `prestorybook` hook, and
+  // unformatted output would fail lint the moment someone commits it.
+  const formatted = await prettier.format(
+    generateFile(componentName, fixtures),
+    { parser: "typescript", filepath: outputPath },
+  );
+
+  // Skip the write when content is unchanged, so a plain `npm run storybook`
+  // restart doesn't touch every story file's mtime (noisy for file watchers
+  // and git status) when nothing upstream has actually changed.
+  const existing = fs.existsSync(outputPath)
+    ? fs.readFileSync(outputPath, "utf8")
+    : null;
+  if (existing !== formatted) {
+    fs.writeFileSync(outputPath, formatted, "utf8");
+  }
   results.generated.push({ componentName, count: fixtures.length });
 }
 

@@ -6,11 +6,7 @@ export interface PDFJsProps {
   documentNameColour?: string;
   element: HTMLElement;
   toolbar?:
-    | "full"
-    | "fullHidePrint"
-    | "minimal"
-    | "minimalHidePrint"
-    | undefined;
+    "full" | "fullHidePrint" | "minimal" | "minimalHidePrint" | undefined;
   [key: string]: unknown;
 }
 
@@ -21,11 +17,7 @@ export interface PDFViewerProps {
   documentName?: string;
   documentNameColour?: string;
   toolbar?:
-    | "full"
-    | "fullHidePrint"
-    | "minimal"
-    | "minimalHidePrint"
-    | undefined;
+    "full" | "fullHidePrint" | "minimal" | "minimalHidePrint" | undefined;
   backend: (jsProps: PDFJsProps) => void;
   additionalBackendAttributes?: Record<
     string,

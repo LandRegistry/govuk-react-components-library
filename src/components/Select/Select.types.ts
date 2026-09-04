@@ -14,7 +14,7 @@ export interface SelectProps {
   errorMessage?: ErrorMessageProps;
   formGroup?: { className?: string; [key: string]: unknown };
   hint?: HintProps;
-  id: string;
+  id?: string;
   items?: Option[];
   label: LabelProps;
 }

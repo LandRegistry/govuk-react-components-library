@@ -15,6 +15,10 @@ npm run uml
 # Run tests before commit
 npm run test
 
+# Run accessibility tests (axe-core against every Storybook story) before commit
+npm run build-storybook
+npm run test-storybook:ci
+
 # Run build before commit
 npm run build
 
