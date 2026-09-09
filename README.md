@@ -22,7 +22,7 @@ npm install @hmlr/govuk-react-components-library
 
 ## Components
 
-You can explore the [components in chromatic](https://67da9f53fd479dc895c4293f-dlxeprbnoj.chromatic.com/).
+You can explore the [components in chromatic](https://67da9f53fd479dc895c4293f-pehzidznws.chromatic.com/).
 
 Note that any component with a `👈🏽` below means that - This component will need javascript to be enabled because of the transitions present in the components using `createAll` or `initAll` recommended by [`govuk-frontend` documentation](https://frontend.design-system.service.gov.uk/configure-components/)
 
