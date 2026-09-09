@@ -16,6 +16,11 @@
 #storybook build directory
 storybook-static
 
+# rollup-plugin-visualizer output - regenerated non-deterministically by
+# every `npm run build` (local, husky, CI), never referenced anywhere, and
+# was shipping in the published npm package via .npmignore's absence
+bundle-analysis-*.html
+
 # misc
 .DS_Store
 .env.local

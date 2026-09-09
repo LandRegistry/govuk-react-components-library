@@ -1,5 +1,17 @@
 #!/bin/bash
 
+# This hook is for local developer commits only - skip it entirely in CI.
+# Any `git commit` run inside a GitHub Actions job (e.g. chromatic.yml's
+# "Commit updated README" step) also triggers husky, since `npm ci` already
+# ran the `prepare` script that installs these hooks - but that job never
+# set up things like Playwright's browsers, which the accessibility step
+# below needs. ci.yml already runs the equivalent checks properly in their
+# own jobs with the right setup, so this would just be redundant and broken.
+# GitHub Actions sets CI=true in every job by default.
+if [ -n "$CI" ]; then
+  exit 0
+fi
+
 # Run format before commit
 npm run format
 

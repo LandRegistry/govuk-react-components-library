@@ -5,6 +5,9 @@
 /.husky
 /.storybook
 
+# Exclude bundle-analysis build diagnostics - not needed by consumers
+/bundle-analysis-*.html
+
 # Exclude local configuration
 /.babelrc
 /webpack.config.js
