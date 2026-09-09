@@ -33,10 +33,52 @@ export const Default: Story = {
   args: { ...examplesFromFixtures.find((f) => f.name === "default")?.options },
 };
 
+export const WithTranslations: Story = {
+  name: "with translations",
+  args: {
+    ...examplesFromFixtures.find((f) => f.name === "with translations")
+      ?.options,
+  },
+};
+
+export const WithValues: Story = {
+  name: "with values",
+  args: {
+    ...examplesFromFixtures.find((f) => f.name === "with values")?.options,
+  },
+};
+
+export const WithValuesAndNamePrefix: Story = {
+  name: "with values and name prefix",
+  args: {
+    ...examplesFromFixtures.find(
+      (f) => f.name === "with values and name prefix",
+    )?.options,
+  },
+};
+
+export const WithValuesNamePrefixAndCustomNames: Story = {
+  name: "with values, name prefix and custom names",
+  args: {
+    ...examplesFromFixtures.find(
+      (f) => f.name === "with values, name prefix and custom names",
+    )?.options,
+  },
+};
+
 export const DayAndMonth: Story = {
   name: "day and month",
   args: {
     ...examplesFromFixtures.find((f) => f.name === "day and month")?.options,
+  },
+};
+
+export const DayAndMonthUsingItems: Story = {
+  name: "day and month (using items)",
+  args: {
+    ...examplesFromFixtures.find(
+      (f) => f.name === "day and month (using items)",
+    )?.options,
   },
 };
 
@@ -47,6 +89,15 @@ export const MonthAndYear: Story = {
   },
 };
 
+export const MonthAndYearUsingItems: Story = {
+  name: "month and year (using items)",
+  args: {
+    ...examplesFromFixtures.find(
+      (f) => f.name === "month and year (using items)",
+    )?.options,
+  },
+};
+
 export const WithErrorsOnly: Story = {
   name: "with errors only",
   args: {
@@ -54,11 +105,48 @@ export const WithErrorsOnly: Story = {
   },
 };
 
-export const WithErrorsAndHint: Story = {
-  name: "with errors and hint",
+export const WithErrorsOnlyUsingClasses: Story = {
+  name: "with errors only (using classes)",
   args: {
-    ...examplesFromFixtures.find((f) => f.name === "with errors and hint")
-      ?.options,
+    ...examplesFromFixtures.find(
+      (f) => f.name === "with errors only (using classes)",
+    )?.options,
+  },
+};
+
+export const WithErrorsOnlyUsingItems: Story = {
+  name: "with errors only (using items)",
+  args: {
+    ...examplesFromFixtures.find(
+      (f) => f.name === "with errors only (using items)",
+    )?.options,
+  },
+};
+
+export const WithErrorsOnlyUsingItemsAndClasses: Story = {
+  name: "with errors only (using items and classes)",
+  args: {
+    ...examplesFromFixtures.find(
+      (f) => f.name === "with errors only (using items and classes)",
+    )?.options,
+  },
+};
+
+export const WithErrorMessageAndHint: Story = {
+  name: "with error message and hint",
+  args: {
+    ...examplesFromFixtures.find(
+      (f) => f.name === "with error message and hint",
+    )?.options,
+  },
+};
+
+export const WithErrorMessageAndHintUsingItems: Story = {
+  name: "with error message and hint (using items)",
+  args: {
+    ...examplesFromFixtures.find(
+      (f) => f.name === "with error message and hint (using items)",
+    )?.options,
   },
 };
 
@@ -70,6 +158,15 @@ export const WithErrorOnDayInput: Story = {
   },
 };
 
+export const WithErrorOnDayInputUsingItems: Story = {
+  name: "with error on day input (using items)",
+  args: {
+    ...examplesFromFixtures.find(
+      (f) => f.name === "with error on day input (using items)",
+    )?.options,
+  },
+};
+
 export const WithErrorOnMonthInput: Story = {
   name: "with error on month input",
   args: {
@@ -78,11 +175,29 @@ export const WithErrorOnMonthInput: Story = {
   },
 };
 
+export const WithErrorOnMonthInputUsingItems: Story = {
+  name: "with error on month input (using items)",
+  args: {
+    ...examplesFromFixtures.find(
+      (f) => f.name === "with error on month input (using items)",
+    )?.options,
+  },
+};
+
 export const WithErrorOnYearInput: Story = {
   name: "with error on year input",
   args: {
     ...examplesFromFixtures.find((f) => f.name === "with error on year input")
       ?.options,
+  },
+};
+
+export const WithErrorOnYearInputUsingItems: Story = {
+  name: "with error on year input (using items)",
+  args: {
+    ...examplesFromFixtures.find(
+      (f) => f.name === "with error on year input (using items)",
+    )?.options,
   },
 };
 

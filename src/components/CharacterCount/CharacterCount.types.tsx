@@ -1,7 +1,7 @@
 import { ErrorMessageProps } from "../ErrorMessage/ErrorMessage.types";
 
 export interface CharacterCountProps {
-  id: string;
+  id?: string;
   className?: string;
   maxlength?: number;
   threshold?: number;

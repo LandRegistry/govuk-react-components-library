@@ -32,3 +32,28 @@ export const Default: Story = {
   name: "default",
   args: { ...examplesFromFixtures.find((f) => f.name === "default")?.options },
 };
+
+export const Interruption: Story = {
+  name: "interruption",
+  args: {
+    ...examplesFromFixtures.find((f) => f.name === "interruption")?.options,
+  },
+};
+
+export const InterruptionWithContentWithLongLineLength: Story = {
+  name: "interruption-with-content-with-long-line-length",
+  args: {
+    ...examplesFromFixtures.find(
+      (f) => f.name === "interruption-with-content-with-long-line-length",
+    )?.options,
+  },
+};
+
+export const InterruptionWithHeadingsContentAndLists: Story = {
+  name: "interruption-with-headings-content-and-lists",
+  args: {
+    ...examplesFromFixtures.find(
+      (f) => f.name === "interruption-with-headings-content-and-lists",
+    )?.options,
+  },
+};

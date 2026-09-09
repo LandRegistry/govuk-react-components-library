@@ -8,6 +8,7 @@ const CharacterCount: React.FC<
 > = (props) => {
   const {
     id,
+    name,
     className,
     maxlength,
     threshold,
@@ -17,7 +18,11 @@ const CharacterCount: React.FC<
     ...attributes
   } = props;
 
-  const characterCountInfoId: string = `${id}-info`;
+  // Mirrors govuk-frontend's Nunjucks macro, which defaults id to name when
+  // id isn't given - without this the count message's id (referenced by the
+  // textarea's aria-describedby) would render as literally "undefined-info".
+  const resolvedId: string | undefined = id || name;
+  const characterCountInfoId: string = `${resolvedId}-info`;
 
   return (
     <div
@@ -28,7 +33,8 @@ const CharacterCount: React.FC<
       data-maxwords={maxwords}
     >
       <Textarea
-        id={id}
+        id={resolvedId}
+        name={name}
         {...attributes}
         errorMessage={errorMessage}
         className={`govuk-js-character-count ${className || ""}${errorMessage ? " govuk-textarea--error" : ""}`}

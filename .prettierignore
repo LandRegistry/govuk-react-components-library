@@ -1,0 +1,5 @@
+# Vendored pdfjs build, copied in as static Storybook demo assets - not our code to format.
+.storybook/public/pdfjs-*-dist/
+
+# Generated rollup-plugin-visualizer bundle reports, regenerated on every build.
+bundle-analysis-*.html

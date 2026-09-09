@@ -56,7 +56,7 @@ const Button: React.FC<
   }
 
   const commonAttributes = {
-    className: `govuk-button ${className || ""}${disabled ? " govuk-button--disabled" : ""} ${isStartButton ? "govuk-button--start" : ""}`,
+    className: `govuk-button ${className || ""} ${isStartButton ? "govuk-button--start" : ""}`,
     // ref: buttonRef,
   };
 

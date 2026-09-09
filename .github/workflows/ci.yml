@@ -11,22 +11,67 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    
+    - uses: actions/checkout@v7
+
     - name: Setup Node.js
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v7
       with:
         node-version: lts/jod
         cache: 'npm'
-        
+
     - name: Install dependencies
-      run: npm install
-      
+      run: npm ci
+
+    - name: Lint
+      run: npm run lint
+
     - name: Run tests
       run: npm test
-      
+
     - name: Build
       run: npm run build
-      
-    - name: Run Storybook build
+
+    - name: Build Storybook
       run: npm run build-storybook
+
+    - name: Upload Storybook build
+      uses: actions/upload-artifact@v7
+      with:
+        name: storybook-static
+        path: storybook-static/
+        retention-days: 1
+
+  # Runs every story through @storybook/addon-a11y's axe-core checks (native
+  # to @storybook/test-runner - see the `a11y` parameter in
+  # .storybook/preview.ts) against the Storybook build produced by the
+  # `build` job above. Violations are logged as warnings rather than failing
+  # the job (the a11y parameter's `test` mode defaults to "todo"), so this
+  # surfaces regressions without blocking merges - flip it to `test: 'error'`
+  # once the current violations are cleaned up to make this job gate on them.
+  accessibility:
+    name: Accessibility (Storybook a11y)
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+    - uses: actions/checkout@v7
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v7
+      with:
+        node-version: lts/jod
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Install Playwright browsers
+      run: npx playwright install --with-deps chromium
+
+    - name: Download Storybook build
+      uses: actions/download-artifact@v8
+      with:
+        name: storybook-static
+        path: storybook-static/
+
+    - name: Run accessibility tests against Storybook
+      run: npm run test-storybook:ci

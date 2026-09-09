@@ -26,18 +26,23 @@ const Input: React.FC<
     ...attributes
   } = props;
 
+  // Mirrors govuk-frontend's Nunjucks macro, which defaults id to name when
+  // id isn't given - without this the input has no id, so its <label for>
+  // (and hint/error aria-describedby) can never associate with it.
+  const resolvedId: string | undefined = id || name;
+
   let describedByValue: string = describedBy || "";
   let hintComponent: JSX.Element | null = null;
   let errorMessageComponent: JSX.Element | null = null;
 
   if (hint) {
-    const hintId: string = `${id}-hint`;
+    const hintId: string = `${resolvedId}-hint`;
     describedByValue += ` ${hintId}`;
     hintComponent = <Hint {...hint} id={hintId} />;
   }
 
   if (errorMessage) {
-    const errorId: string = id ? `${id}-error` : "";
+    const errorId: string = resolvedId ? `${resolvedId}-error` : "";
     describedByValue += ` ${errorId}`;
     errorMessageComponent = <ErrorMessage {...errorMessage} id={errorId} />;
   }
@@ -45,9 +50,9 @@ const Input: React.FC<
   const input: JSX.Element = (
     <input
       ref={ref}
-      id={id}
+      id={resolvedId}
       className={`govuk-input ${className || ""} ${errorMessage ? " govuk-input--error" : ""}`}
-      name={name || id}
+      name={name || resolvedId}
       aria-describedby={describedByValue || undefined}
       {...attributes}
     />
@@ -57,7 +62,7 @@ const Input: React.FC<
     <div
       className={`govuk-form-group ${formGroup?.className || ""} ${errorMessage ? "govuk-form-group--error" : ""}`}
     >
-      <Label {...label} htmlFor={id} />
+      <Label {...label} htmlFor={resolvedId} />
       {hintComponent}
       {errorMessageComponent}
       {prefix || suffix ? (

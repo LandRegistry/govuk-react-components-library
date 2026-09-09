@@ -134,3 +134,37 @@ export const WithASingleNavigationItemAndCollapseNavigationOnMobileSetToTrue: St
       )?.options,
     },
   };
+
+export const WithLanguageNavigation: Story = {
+  name: "with language navigation",
+  args: {
+    ...examplesFromFixtures.find((f) => f.name === "with language navigation")
+      ?.options,
+  },
+};
+
+export const WithRightAlignedLanguageNavigation: Story = {
+  name: "with right-aligned language navigation",
+  args: {
+    ...examplesFromFixtures.find(
+      (f) => f.name === "with right-aligned language navigation",
+    )?.options,
+  },
+};
+
+export const InverseWithLanguageNavigation: Story = {
+  name: "inverse with language navigation",
+  args: {
+    ...examplesFromFixtures.find(
+      (f) => f.name === "inverse with language navigation",
+    )?.options,
+  },
+};
+
+export const WithInlineEndSlot: Story = {
+  name: "with `inline` end slot",
+  args: {
+    ...examplesFromFixtures.find((f) => f.name === "with `inline` end slot")
+      ?.options,
+  },
+};

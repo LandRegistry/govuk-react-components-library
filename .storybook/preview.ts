@@ -30,6 +30,11 @@ const preview: Preview = {
       options: {},
       // Optional flag to prevent the automatic check
       manual: true,
+      // Fails @storybook/test-runner's a11y check (see the `accessibility`
+      // CI job in .github/workflows/ci.yml) instead of just logging a
+      // warning - the library has 0 known violations as of the audit that
+      // added full story coverage, so this now gates future regressions.
+      test: "error",
     },
   },
 

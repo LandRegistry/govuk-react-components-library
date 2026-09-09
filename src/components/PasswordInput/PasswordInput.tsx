@@ -27,18 +27,24 @@ const PasswordInput: React.FC<
       ...attributes
     } = props;
 
+    // Mirrors govuk-frontend's Nunjucks macro, which defaults id to name
+    // when id isn't given - without this the input has no id, so its
+    // <label for> (and hint/error aria-describedby) can never associate
+    // with it.
+    const resolvedId: string | undefined = id || name;
+
     let describedByValue: string = describedBy || "";
     let hintComponent: JSX.Element | null = null;
     let errorMessageComponent: JSX.Element | null = null;
 
     if (hint) {
-      const hintId = `${id}-hint`;
+      const hintId = `${resolvedId}-hint`;
       describedByValue += ` ${hintId}`;
       hintComponent = <Hint {...hint} id={hintId} />;
     }
 
     if (errorMessage) {
-      const errorId = id ? `${id}-error` : "";
+      const errorId = resolvedId ? `${resolvedId}-error` : "";
       describedByValue += ` ${errorId}`;
       errorMessageComponent = <ErrorMessage {...errorMessage} id={errorId} />;
     }
@@ -63,7 +69,7 @@ const PasswordInput: React.FC<
         passwordHiddenAnnouncementText;
 
     // Label handles isPageHeading internally — no extra wrapper needed here
-    const labelEl = <Label {...label} htmlFor={id} />;
+    const labelEl = <Label {...label} htmlFor={resolvedId} />;
 
     return (
       <div
@@ -77,9 +83,9 @@ const PasswordInput: React.FC<
         <div className="govuk-input__wrapper govuk-password-input__wrapper">
           <input
             ref={ref}
-            id={id}
+            id={resolvedId}
             className={`govuk-input govuk-password-input__input govuk-js-password-input-input${className ? ` ${className}` : ""}${errorMessage ? " govuk-input--error" : ""}`}
-            name={name || id}
+            name={name || resolvedId}
             type="password"
             spellCheck={false}
             autoComplete={autoComplete}
@@ -92,7 +98,7 @@ const PasswordInput: React.FC<
             type="button"
             className="govuk-button govuk-button--secondary govuk-password-input__toggle govuk-js-password-input-toggle"
             data-module="govuk-button"
-            aria-controls={id}
+            aria-controls={resolvedId}
             aria-label={showPasswordAriaLabelText}
             hidden
           >
