@@ -38,6 +38,14 @@ describe("Panel component", () => {
     expect(screen.getByText(message)).toBeInTheDocument();
   });
 
+  test("does not render a body when no children are provided", () => {
+    const titleChildren = "Application complete";
+    const { container } = render(<Panel titleChildren={titleChildren} />);
+
+    expect(screen.getByText(titleChildren)).toBeInTheDocument();
+    expect(container.querySelector(".govuk-panel__body")).toBeNull();
+  });
+
   Object.values(examplesFromFixtures).forEach((example) => {
     test(`Test Fixture for Panel called "${example.name}"`, () => {
       let level;

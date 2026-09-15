@@ -107,6 +107,43 @@ describe("Radios component", () => {
     expect(yesRadio).not.toBeChecked();
   });
 
+  test("should apply defaultChecked based on defaultValue when value is not provided", () => {
+    render(
+      <Radios
+        items={items}
+        name="example-default-value"
+        defaultValue="yes"
+        onChange={(event) => {
+          console.log(event);
+        }}
+      />,
+    );
+    const yesRadio: HTMLElement = screen.getByRole("radio", { name: "Yes" });
+    expect(yesRadio).toBeChecked();
+    const noRadio: HTMLElement = screen.getByRole("radio", { name: "No" });
+    expect(noRadio).not.toBeChecked();
+  });
+
+  test("should render without throwing when items contains undefined entries", () => {
+    render(
+      <Radios
+        items={[...items, undefined]}
+        name="example-with-undefined-item"
+        value="no"
+        onChange={(event) => {
+          console.log(event);
+        }}
+      />,
+    );
+    expect(screen.getByRole("radio", { name: "No" })).toBeChecked();
+    expect(screen.getByRole("radio", { name: "Yes" })).not.toBeChecked();
+  });
+
+  test("should render without throwing when no items are provided", () => {
+    render(<Radios name="example-no-items" />);
+    expect(screen.queryAllByRole("radio")).toHaveLength(0);
+  });
+
   Object.values(examplesFromFixtures).forEach((example) => {
     test(`Test Fixture for Radios called "${example.name}"`, () => {
       render(

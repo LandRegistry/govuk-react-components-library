@@ -32,6 +32,15 @@ describe("WarningText component", () => {
     cleanup();
   });
 
+  test("renders the default warning message when no children are provided", () => {
+    render(
+      <MemoryRouter>
+        <WarningText />
+      </MemoryRouter>,
+    );
+    expect(screen.getByText("Warning message")).toBeInTheDocument();
+  });
+
   Object.values(examplesFromFixtures).forEach((example) => {
     test(`Test Fixture for WarningText called "${example.name}"`, () => {
       render(

@@ -111,6 +111,44 @@ describe("UsePagination Hook via TestComponent", () => {
     );
   });
 
+  test("shows only right dots when current page is near the start", () => {
+    render(
+      <TestComponent
+        totalCount={200}
+        pageSize={10}
+        currentPage={2}
+        siblingCount={1}
+      />,
+    );
+    // leftPages = range(1, 8 + 2*siblingCount) = 1..10, then DOTS, then last page (20)
+    for (let page = 1; page <= 10; page++) {
+      expect(screen.getByTestId(`page-${page - 1}`)).toHaveTextContent(
+        String(page),
+      );
+    }
+    expect(screen.getByTestId("page-10")).toHaveTextContent(DOTS);
+    expect(screen.getByTestId("page-11")).toHaveTextContent("20");
+  });
+
+  test("shows only left dots when current page is near the end", () => {
+    render(
+      <TestComponent
+        totalCount={200}
+        pageSize={10}
+        currentPage={19}
+        siblingCount={1}
+      />,
+    );
+    // [firstPage, DOTS, ...rightPages] where rightPages = range(13, 20)
+    expect(screen.getByTestId("page-0")).toHaveTextContent("1");
+    expect(screen.getByTestId("page-1")).toHaveTextContent(DOTS);
+    for (let page = 13; page <= 20; page++) {
+      expect(screen.getByTestId(`page-${page - 13 + 2}`)).toHaveTextContent(
+        String(page),
+      );
+    }
+  });
+
   test("returns undefined when pageSize is zero (invalid case)", () => {
     render(<TestComponent totalCount={100} pageSize={0} currentPage={1} />);
     const pagination = screen.queryByTestId("pagination");

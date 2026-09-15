@@ -114,4 +114,28 @@ describe("Tabs Component", () => {
     // Check that no tabs are rendered
     expect(screen.queryByRole("list")).toBeNull();
   });
+
+  test("displays no tabs when items is not provided at all", () => {
+    render(<Tabs id="test-tabs" />);
+
+    expect(screen.queryByRole("list")).toBeNull();
+    expect(screen.getByText("Contents")).toBeInTheDocument();
+  });
+
+  test("generates an id from idPrefix and index when an item has no id", () => {
+    render(
+      <Tabs
+        id="test-tabs"
+        idPrefix="generated"
+        items={[{ label: "No ID Tab", panel: { children: "No ID Content" } }]}
+      />,
+    );
+
+    const link = screen.getByRole("link", { name: "No ID Tab" });
+    expect(link.getAttribute("href")).toEqual("#generated-1");
+    expect(screen.getByText("No ID Content").closest("div")).toHaveAttribute(
+      "id",
+      "generated-1",
+    );
+  });
 });

@@ -30,6 +30,13 @@ describe("SkipLink component", () => {
     expect(skipLink.getAttribute("title")).toEqual("Just a SkipLink component");
   });
 
+  test("uses default href and className when none are provided", () => {
+    render(<SkipLink>Skip to main content</SkipLink>);
+    const skipLink = screen.getByText("Skip to main content");
+    expect(skipLink.getAttribute("href")).toEqual("#content");
+    expect(skipLink.getAttribute("class")).toEqual("govuk-skip-link ");
+  });
+
   Object.values(examplesFromFixtures).forEach((example) => {
     test(`Test Fixture for SkipLink called "${example.name}"`, () => {
       render(<SkipLink {...example.options} />);

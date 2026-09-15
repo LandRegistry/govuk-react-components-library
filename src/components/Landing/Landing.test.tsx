@@ -51,4 +51,14 @@ describe("The Landing page should", () => {
     fireEvent.click(link);
     expect(screen.getByText("Another page")).toBeTruthy();
   });
+
+  test("Defaults the link to the root path when `to` is not provided", () => {
+    render(
+      <MemoryRouter>
+        <Landing />
+      </MemoryRouter>,
+    );
+    const link = screen.getByText("Single sign on", { selector: "a" });
+    expect(link.getAttribute("href")).toEqual("/");
+  });
 });

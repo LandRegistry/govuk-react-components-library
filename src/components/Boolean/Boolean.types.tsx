@@ -2,6 +2,7 @@ import { ErrorMessageProps } from "../ErrorMessage/ErrorMessage.types";
 import { FieldsetProps } from "../Fieldset/Fieldset.types";
 import { HintProps } from "../Hint/Hint.types";
 import { LabelProps } from "../Label/Label.types";
+import { FormGroupProps } from "../common.types";
 
 export interface BooleanItem {
   id?: string;
@@ -23,7 +24,7 @@ export interface BooleanProps {
   className?: string;
   errorMessage?: ErrorMessageProps;
   fieldset?: FieldsetProps;
-  formGroup?: { className?: string; [key: string]: unknown };
+  formGroup?: FormGroupProps;
   hint?: HintProps;
   idPrefix?: string;
   items?: BooleanItem[];

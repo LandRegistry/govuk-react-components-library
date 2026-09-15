@@ -25,6 +25,10 @@ export interface HeaderProps extends HTMLAttributes<HTMLDivElement> {
   navigationLabel?: string;
   menuButtonLabel?: string;
   logo?: string;
-  removeGovUKHeader?: unknown;
+  // Header.tsx only ever uses this as `!removeGovUKHeader` - a real boolean,
+  // not the loose `unknown` this had before. Known consumers currently pass
+  // the string "yes" (a leftover Nunjucks-param-style convention), which
+  // still works at runtime since it's truthy, but should migrate to `true`.
+  removeGovUKHeader?: boolean;
   assetsPath?: string;
 }

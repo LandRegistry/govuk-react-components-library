@@ -118,4 +118,18 @@ describe("Card Layout component", () => {
       .closest(".card");
     expect(thirdCard?.getAttribute("style")).toBeNull();
   });
+
+  test("renders a final partial row when columns don't divide evenly", () => {
+    const unevenData: CardLayoutProps = {
+      cardColumns: [...data.cardColumns, data.cardColumns[0]],
+    };
+
+    render(
+      <BrowserRouter>
+        <CardLayout {...unevenData} />
+      </BrowserRouter>,
+    );
+
+    expect(screen.getAllByText(data.cardColumns[0].header)).toHaveLength(2);
+  });
 });

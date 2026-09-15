@@ -1,6 +1,7 @@
 import { ErrorMessageProps } from "../ErrorMessage/ErrorMessage.types";
 import { HintProps } from "../Hint/Hint.types";
 import { LabelProps } from "../Label/Label.types";
+import { FormGroupProps } from "../common.types";
 
 export interface Option {
   reactListKey?: string | number;
@@ -12,7 +13,7 @@ export interface SelectProps {
   className?: string;
   "aria-describedby"?: string;
   errorMessage?: ErrorMessageProps;
-  formGroup?: { className?: string; [key: string]: unknown };
+  formGroup?: FormGroupProps;
   hint?: HintProps;
   id?: string;
   items?: Option[];

@@ -166,6 +166,67 @@ describe("PasswordInput component", () => {
     );
   });
 
+  test("falls back to name for id when id is not provided", () => {
+    render(<PasswordInput label={{ children: "Password" }} name="password" />);
+    expect(screen.getByLabelText("Password")).toHaveAttribute("id", "password");
+  });
+
+  test("falls back to resolvedId for name when name is not provided", () => {
+    render(<PasswordInput id="password-id" label={{ children: "Password" }} />);
+    expect(screen.getByLabelText("Password")).toHaveAttribute(
+      "name",
+      "password-id",
+    );
+  });
+
+  test("uses an empty error id when neither id nor name is provided", () => {
+    const { container } = render(
+      <PasswordInput
+        label={{ children: "Password" }}
+        errorMessage={{ children: "Enter your password" }}
+      />,
+    );
+    expect(screen.getByText("Enter your password")).toBeInTheDocument();
+    expect(container.querySelector(".govuk-error-message")).toHaveAttribute(
+      "id",
+      "",
+    );
+  });
+
+  test("omits i18n data attributes when translation props are set to an empty string", () => {
+    const { container } = render(
+      <PasswordInput
+        id="password-no-i18n"
+        label={{ children: "Password" }}
+        name="password"
+        showPasswordText=""
+        hidePasswordText=""
+        showPasswordAriaLabelText=""
+        hidePasswordAriaLabelText=""
+      />,
+    );
+    expect(container.firstChild).not.toHaveAttribute("data-i18n.show-password");
+    expect(container.firstChild).not.toHaveAttribute("data-i18n.hide-password");
+    expect(container.firstChild).not.toHaveAttribute(
+      "data-i18n.show-password-aria-label",
+    );
+    expect(container.firstChild).not.toHaveAttribute(
+      "data-i18n.hide-password-aria-label",
+    );
+  });
+
+  test("appends formGroup.className to the form group wrapper", () => {
+    const { container } = render(
+      <PasswordInput
+        id="password"
+        label={{ children: "Password" }}
+        name="password"
+        formGroup={{ className: "custom-form-group" }}
+      />,
+    );
+    expect(container.firstChild).toHaveClass("custom-form-group");
+  });
+
   Object.values(examplesFromFixtures).forEach((example) => {
     test(`Test Fixture for PasswordInput called "${example.name}"`, () => {
       render(

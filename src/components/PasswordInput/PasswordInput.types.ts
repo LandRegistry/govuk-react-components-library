@@ -1,23 +1,18 @@
-export interface PasswordInputLabelProps {
-  children?: React.ReactNode;
-  className?: string;
-  isPageHeading?: boolean;
-  [key: string]: unknown;
-}
+import { ErrorMessageProps } from "../ErrorMessage/ErrorMessage.types";
+import { HintProps } from "../Hint/Hint.types";
+import { LabelProps } from "../Label/Label.types";
+import { FormGroupProps } from "../common.types";
 
 export interface PasswordInputProps {
   /** Additional CSS classes for the `<input>` element. Maps from fixture `classes` → className */
   className?: string;
   /** Pre-existing aria-describedby value to prepend */
   "aria-describedby"?: string;
-  /** Error message sub-object — `{ children }` after processExampleData transforms `text` */
-  errorMessage?: { children?: React.ReactNode; [key: string]: unknown };
+  errorMessage?: ErrorMessageProps;
   /** Wrapper div options */
-  formGroup?: { className?: string; [key: string]: unknown };
-  /** Hint sub-object — `{ children }` after processExampleData transforms `text` */
-  hint?: { children?: React.ReactNode; [key: string]: unknown };
-  /** Label sub-object — `{ children, className, isPageHeading }` */
-  label?: PasswordInputLabelProps;
+  formGroup?: FormGroupProps;
+  hint?: HintProps;
+  label?: LabelProps;
   /** Input name attribute */
   name?: string;
   /** Input id attribute — also used to link label and aria-describedby */
