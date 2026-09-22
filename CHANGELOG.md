@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/LandRegistry/govuk-react-components-library/compare/v1.2.3...v1.3.0) (2026-09-22)
+
+
+### Bug Fixes
+
+* **pdf-viewer-canvas:** fix PDF loading, add GitHub release automation, bump safe deps ([7a97f46](https://github.com/LandRegistry/govuk-react-components-library/commit/7a97f46ae3e8f10c912a82791a294a35f46b9581))
+* skip husky in CI and stop tracking generated bundle-analysis reports ([0f30bb6](https://github.com/LandRegistry/govuk-react-components-library/commit/0f30bb6fb81c4d9c82ee5db315542477dd1415a5))
+
 ### [1.2.3](https://github.com/LandRegistry/govuk-react-components-library/compare/v1.2.2...v1.2.3) (2026-09-09)
 
 ### [1.2.2](https://github.com/LandRegistry/govuk-react-components-library/compare/v1.2.1...v1.2.2) (2026-04-15)
