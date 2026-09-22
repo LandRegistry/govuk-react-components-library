@@ -100,7 +100,7 @@ const PDFViewerCanvas: React.FC<PDFViewerCanvasProps> = ({
       try {
         setPdfState((prevState) => ({ ...prevState, loading: true }));
         const source = ResolvePDFSource(file).source;
-        const pdf = await pdfjsLib.getDocument(source).promise;
+        const pdf = await pdfjsLib.getDocument({ url: source }).promise;
         pdfDocumentRef.current = pdf;
 
         const initialPageNumber = pdf.numPages >= pageNumber ? pageNumber : 1;

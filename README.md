@@ -838,7 +838,7 @@ The UML diagram for all components in this library can be found here:
 
 ## Release New version of this package
 
-Use the floowing command to release a new version of the application
+Use the following command to release a new version of the application
 
 ```bash
 npm run release
@@ -856,18 +856,16 @@ or for specific versions
 npm run release -- --release-as 1.9.1
 ```
 
-Then publish the version with the following command
+This bumps the version, updates `CHANGELOG.md` and creates a `vX.Y.Z` git tag locally. Push it with:
 
 ```bash
 git push --follow-tags origin main
 ```
 
-and publish as an npm package run
+Pushing the tag triggers two GitHub Actions workflows automatically - no further manual steps:
 
-```bash
-npm config set //registry.npmjs.org/:_authToken={$NPM_TOKEN}
-npm publish
-```
+- **GitHub Release** ([github-release.yml](.github/workflows/github-release.yml)) creates a GitHub release for the tag, with release notes taken from the corresponding `CHANGELOG.md` section.
+- **Publish to npm** ([npm-publish.yml](.github/workflows/npm-publish.yml)) builds and publishes the package to the npm registry.
 
 ## License
 

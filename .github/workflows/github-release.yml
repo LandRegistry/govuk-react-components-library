@@ -1,0 +1,53 @@
+name: GitHub Release
+
+# Fires on the tag that `npm run release` (standard-version) creates, once it's
+# pushed with `git push --follow-tags`. This is a real push event (not one
+# raised by GITHUB_TOKEN), so it also reliably triggers npm-publish.yml's own
+# tag-push trigger without needing a PAT to work around GitHub's
+# GITHUB_TOKEN-can't-trigger-workflows restriction.
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      # Pull this tag's section out of CHANGELOG.md (as written by
+      # standard-version) so the GitHub release notes match the changelog
+      # instead of GitHub's generic auto-generated notes. Falls back to
+      # auto-generated notes if the tag has no matching section (e.g. the
+      # changelog wasn't committed for some reason).
+      - name: Extract release notes from CHANGELOG.md
+        id: notes
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          awk -v ver="$VERSION" '
+            BEGIN { insection=0 }
+            /^(## |### )([0-9]|\[[0-9])/ {
+              if (insection) { exit }
+              if (index($0, "[" ver "]") > 0 || index($0, "## " ver " ") > 0 || index($0, "### " ver " ") > 0) { insection=1; next }
+              next
+            }
+            insection { print }
+          ' CHANGELOG.md > release-notes.md
+
+          if grep -q '[^[:space:]]' release-notes.md; then
+            echo "found=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "found=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: ${{ github.ref_name }}
+          body_path: ${{ steps.notes.outputs.found == 'true' && 'release-notes.md' || '' }}
+          generate_release_notes: ${{ steps.notes.outputs.found != 'true' }}
