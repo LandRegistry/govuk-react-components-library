@@ -55,6 +55,7 @@ const PDFViewerCanvas: React.FC<PDFViewerCanvasProps> = ({
         if (context) {
           const renderContext = {
             canvasContext: context,
+            canvas,
             viewport,
             annotationMode: 3,
           };

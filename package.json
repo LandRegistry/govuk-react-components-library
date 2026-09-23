@@ -5,7 +5,10 @@
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
-  "sideEffects": false,
+  "sideEffects": [
+    "**/*.scss",
+    "**/*.css"
+  ],
   "files": [
     "dist"
   ],
@@ -43,7 +46,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/LandRegistry/govuk-react-components-library"
+    "url": "git+https://github.com/LandRegistry/govuk-react-components-library.git"
   },
   "bugs": {
     "url": "https://github.com/LandRegistry/govuk-react-components-library/issues"
@@ -200,5 +203,10 @@
     "unrs-resolver@1.12.2": true,
     "esbuild@0.28.2": true,
     "@swc/core@1.16.2": true
+  },
+  "standard-version": {
+    "scripts": {
+      "postchangelog": "prettier --write CHANGELOG.md"
+    }
   }
 }
