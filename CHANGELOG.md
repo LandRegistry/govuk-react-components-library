@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.1](https://github.com/LandRegistry/govuk-react-components-library/compare/v1.3.0...v1.3.1) (2026-09-23)
+
+### Bug Fixes
+
+- resolve build warnings, release changelog drift, and stripped CSS ([eccd8fa](https://github.com/LandRegistry/govuk-react-components-library/commit/eccd8fad65b7673f33cec3a4c8747fa5db8c403d))
+
 ## [1.3.0](https://github.com/LandRegistry/govuk-react-components-library/compare/v1.2.3...v1.3.0) (2026-09-22)
 
 ### Bug Fixes
